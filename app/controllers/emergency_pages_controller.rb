@@ -1,0 +1,2 @@
+class EmergencyPagesController < ApplicationController
+end
