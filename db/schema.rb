@@ -14,6 +14,36 @@ ActiveRecord::Schema[7.1].define(version: 2025_05_27_135939) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "emergency_modules", force: :cascade do |t|
+    t.string "name"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_emergency_modules_on_user_id"
+  end
+
+  create_table "emergency_pages", force: :cascade do |t|
+    t.string "title"
+    t.text "step"
+    t.bigint "emergency_topic_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["emergency_topic_id"], name: "index_emergency_pages_on_emergency_topic_id"
+    t.index ["user_id"], name: "index_emergency_pages_on_user_id"
+  end
+
+  create_table "emergency_topics", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.bigint "emergency_module_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["emergency_module_id"], name: "index_emergency_topics_on_emergency_module_id"
+    t.index ["user_id"], name: "index_emergency_topics_on_user_id"
+  end
+
   create_table "first_aid_maps", force: :cascade do |t|
     t.string "name"
     t.string "address"
@@ -74,6 +104,11 @@ ActiveRecord::Schema[7.1].define(version: 2025_05_27_135939) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "emergency_modules", "users"
+  add_foreign_key "emergency_pages", "emergency_topics"
+  add_foreign_key "emergency_pages", "users"
+  add_foreign_key "emergency_topics", "emergency_modules"
+  add_foreign_key "emergency_topics", "users"
   add_foreign_key "training_pages", "training_topics"
   add_foreign_key "training_progresses", "training_topics"
   add_foreign_key "training_progresses", "users"
