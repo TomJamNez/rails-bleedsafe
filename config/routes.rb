@@ -1,11 +1,5 @@
 Rails.application.routes.draw do
-  get 'emergency_topics/show'
-  get 'emergency_topics/new'
-  get 'emergency_topics/edit'
-  get 'emergency_modules/index'
-  get 'emergency_modules/show'
-  get 'emergency_modules/new'
-  get 'emergency_modules/edit'
+
   devise_for :users
   root to: "pages#home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
