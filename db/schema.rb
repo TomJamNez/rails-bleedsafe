@@ -10,9 +10,46 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_05_27_101118) do
+ActiveRecord::Schema[7.1].define(version: 2025_05_27_113946) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "training_modules", force: :cascade do |t|
+    t.string "name"
+    t.boolean "active"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "training_pages", force: :cascade do |t|
+    t.string "title"
+    t.text "step"
+    t.boolean "active"
+    t.bigint "training_topic_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["training_topic_id"], name: "index_training_pages_on_training_topic_id"
+  end
+
+  create_table "training_progresses", force: :cascade do |t|
+    t.string "state"
+    t.bigint "user_id", null: false
+    t.bigint "training_topic_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["training_topic_id"], name: "index_training_progresses_on_training_topic_id"
+    t.index ["user_id"], name: "index_training_progresses_on_user_id"
+  end
+
+  create_table "training_topics", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.boolean "active"
+    t.bigint "training_module_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["training_module_id"], name: "index_training_topics_on_training_module_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -26,4 +63,8 @@ ActiveRecord::Schema[7.1].define(version: 2025_05_27_101118) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "training_pages", "training_topics"
+  add_foreign_key "training_progresses", "training_topics"
+  add_foreign_key "training_progresses", "users"
+  add_foreign_key "training_topics", "training_modules"
 end
