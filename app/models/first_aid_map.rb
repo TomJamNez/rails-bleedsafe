@@ -1,0 +1,2 @@
+class FirstAidMap < ApplicationRecord
+end
