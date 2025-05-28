@@ -10,7 +10,7 @@
     <%= cl_image_tag(@emergency_module.photo.key, height: 300, width: 400, crop: :fill) %>
     <p class="card-text">Is active? <%= @emergency_module.active %></p>
     <p class="card-text">Last updated by <%= @emergency_module.user.email  %></p>
-
+  <%=link_to "Create Topic", new_emergency_module_emergency_topic_path(@emergency_module), class: "btn btn-primary"  %>
   </div>
 <br>
 <br>
@@ -20,7 +20,8 @@
     <h5 class="card-title"><%= emergency_topic.name %></h5>
     <%= cl_image_tag(emergency_topic.photo.key, height: 300, width: 400, crop: :fill) %>
     <p class="card-text">Last updated by <%= emergency_topic.user.email %></p>
-    <%=link_to "Show topic", emergency_topic_path(emergency_topic), class: "btn btn-primary"  %>
+      <p class="card-text">is active? <%= emergency_topic.active %></p>
+    <%=link_to "Show topic", emergency_module_emergency_topic_path(emergency_topic), class: "btn btn-primary"  %>
     </div>
   <% end %>
 

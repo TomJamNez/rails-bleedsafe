@@ -1,2 +1,11 @@
 <h1>EmergencyTopics#new</h1>
 <p>Find me in app/views/emergency_topics/new.html.erb</p>
+
+<div class="container-lg border form mt-4">
+<%= simple_form_for [@emergency_module, @emergency_topic] do |f| %>
+<%= f.input :name %>
+<%= f.input :description %>
+<%= f.input :photo, as: :file %>
+<%= f.button :submit, class: "btn btn-primary mt-4 mb-4" %>
+ <% end %>
+ </div>
