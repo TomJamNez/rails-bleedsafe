@@ -1,10 +1,12 @@
 class EmergencyTopicsController < ApplicationController
+ # TJ implemented rails-bleedsafe task 26, some issues and overlap with pundit and topics that cannot be delivered yet.
   before_action :module_lookup, only: %i[new show create edit update]
   def show
 #user logic, will need work for admin as well
     @emergency_topic = EmergencyTopic.find(params[:id])
-
     @emergency_pages = @emergency_topic.emergency_pages.all
+#this is an admin only variable, amend after pundit
+    @emergency_page = EmergencyPage.new()
 
   end
 
@@ -21,7 +23,7 @@ class EmergencyTopicsController < ApplicationController
 
     if @emergency_topic.save
       #sort redirect back to object instead of index, leaving like this as easier for people to learn what the app is doing. This is admin only so not important
-      redirect_to emergency_module_emergency_topic(@emergency_topic)
+      redirect_to emergency_module_path(@emergency_module)
     else
       render :new, status: :unprocessable_entity
     end
