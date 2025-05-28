@@ -1,5 +1,5 @@
 class EmergencyModulesController < ApplicationController
-  # TJ implemented rails-bleesafe task 25, some issues and overlap with pundit and topics that cannot be delivered yet.
+  # TJ implemented rails-bleedsafe task 25, some issues and overlap with pundit and topics that cannot be delivered yet.
   def index
     #user logic, will need work for admin as well
     @emergency_modules = EmergencyModule.where(active: true)
