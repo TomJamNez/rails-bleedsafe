@@ -1,2 +1,17 @@
 <h1>EmergencyModules#edit</h1>
 <p>Find me in app/views/emergency_modules/edit.html.erb</p>
+
+<!-- Create shared form for edit -->
+
+<div class="container-lg border form mt-4">
+<p>Current Image</p>
+ <%= cl_image_tag(@emergency_module.photo.key, height: 300, width: 400, crop: :fill) %>
+
+<%= simple_form_for @emergency_module do |f| %>
+<%= f.input :name %>
+<!-- resolve placeholder text -->
+<%= f.input :photo, as: :file %>
+<%= f.input :active %>
+<%= f.button :submit, class: "btn btn-primary mt-4 mb-4" %>
+ <% end %>
+ </div>

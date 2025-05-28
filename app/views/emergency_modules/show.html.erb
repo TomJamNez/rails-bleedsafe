@@ -1,2 +1,27 @@
 <h1>EmergencyModules#show</h1>
 <p>Find me in app/views/emergency_modules/show.html.erb</p>
+
+ <%=link_to "Back to Modules", emergency_modules_path, class: "btn btn-primary" %>
+  <%=link_to "edit", edit_emergency_module_path(@emergency_module), class: "btn btn-primary" %>
+
+<div class="container">
+    <div class="card">
+    <h5 class="card-title"><%= @emergency_module.name %></h5>
+    <%= cl_image_tag(@emergency_module.photo.key, height: 300, width: 400, crop: :fill) %>
+    <p class="card-text">Is active? <%= @emergency_module.active %></p>
+    <p class="card-text">Last updated by <%= @emergency_module.user.email  %></p>
+
+  </div>
+<br>
+<br>
+<br>
+    <% @emergency_topics.each do |emergency_topic| %>
+    <div class="card">
+    <h5 class="card-title"><%= emergency_topic.name %></h5>
+    <%= cl_image_tag(emergency_topic.photo.key, height: 300, width: 400, crop: :fill) %>
+    <p class="card-text">Last updated by <%= emergency_topic.user.email %></p>
+    <%=link_to "Show topic", emergency_topic_path(emergency_topic), class: "btn btn-primary"  %>
+    </div>
+  <% end %>
+
+  </div>
