@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_05_28_104309) do
+ActiveRecord::Schema[7.1].define(version: 2025_05_28_132127) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -58,6 +58,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_05_28_104309) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "active"
     t.index ["emergency_topic_id"], name: "index_emergency_pages_on_emergency_topic_id"
     t.index ["user_id"], name: "index_emergency_pages_on_user_id"
   end
@@ -69,6 +70,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_05_28_104309) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "active"
     t.index ["emergency_module_id"], name: "index_emergency_topics_on_emergency_module_id"
     t.index ["user_id"], name: "index_emergency_topics_on_user_id"
   end
