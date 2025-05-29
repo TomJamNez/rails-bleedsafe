@@ -1,2 +1,37 @@
-<h1>TrainingModules#show</h1>
-<p>Find me in app/views/training_modules/show.html.erb</p>
+<h1>Our Training Modules</h1>
+<p>Below are our training modules to help you get started:</p>
+<div class="container">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><%= link_to "Home", root_path %></li>
+      <li class="breadcrumb-item active" aria-current="page">Emergency Training</li>
+    </ol>
+  </nav>
+
+  <div class="d-flex flex-row justify-content-evenly">
+    <div>
+      <%= cl_image_tag(@training_module.photo.key, height: 300, width: 400, crop: :fill) %>
+
+        </div>
+        <div class="module-info flex-grow-1 ml-3">
+          <h3><%= @training_module.name %></h3>
+    </div>
+    <div class="card form" style="width:100%;">
+      <div class="card-body">
+        <h2>Welcome to Your Bleed Safe Training</h2>
+        <p class="card-text">
+          Enhance your knowledge on emergency safety tips with our free online modules. These resources are designed to help you understand essential emergency practices.
+        </p>
+        <ul>
+
+      </div>
+    </div>
+  </div>
+
+  <br>
+  <div class="border order-form mt-4 p-3">
+  </div>
+
+  <br><br><br>
+
+</div>

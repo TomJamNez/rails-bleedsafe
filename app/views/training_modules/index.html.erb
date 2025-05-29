@@ -1,2 +1,32 @@
-<h1>TrainingModules#index</h1>
-<p>Find me in app/views/training_modules/index.html.erb</p>
+
+<div class="container">
+  <h1>My Training Modules</h1>
+
+  <% @training_modules.each do |training_module| %>
+
+      <% card_class = "card module-card m-3" %>
+      <% card_style = "background-color:#ff0000;" %>
+      <% status_label = "NOT STARTED" %>
+
+
+    <div class="<%= card_class %>" style="<%= card_style %>">
+      <h2 class="p-3"><%= status_label %></h2>
+      <div class="d-flex flex-row justify-content-between align-items-center p-3">
+        <div class="module-thumb">
+          <%= cl_image_tag(training_module.photo.key, height: 300, width: 400, crop: :fill) %>
+
+        </div>
+        <div class="module-info flex-grow-1 ml-3">
+          <h3><%= training_module.name %></h3>
+
+          <p>Updated at: <%= training_module.updated_at.strftime("%B %d, %Y") || 'Never' %></p>
+        </div>
+        <div class="module-actions">
+
+            <%= link_to "Continue", training_module_path(training_module), class: "btn btn-primary" %>
+
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
