@@ -2,39 +2,29 @@
 <div class="container">
   <h1>My Training Modules</h1>
 
-  <% @my_training_module.each do |user_module| %>
-    <% if user_module.completed? %>
-      <% card_class = "card module-card m-3" %>
-      <% card_style = "background-color:#008000;" %>
-      <% status_label = "COMPLETED" %>
-    <% elsif user_module.in_progress? %>
-      <% card_class = "card module-card m-3" %>
-      <% card_style = "background-color:#ffff00;" %>
-      <% status_label = "IN PROGRESS" %>
-    <% else %>
+  <% @training_modules.each do |training_module| %>
+
       <% card_class = "card module-card m-3" %>
       <% card_style = "background-color:#ff0000;" %>
       <% status_label = "NOT STARTED" %>
-    <% end %>
+
 
     <div class="<%= card_class %>" style="<%= card_style %>">
       <h2 class="p-3"><%= status_label %></h2>
       <div class="d-flex flex-row justify-content-between align-items-center p-3">
         <div class="module-thumb">
-          <%= cl_image_tag(training_topic.module.photo.key, height: 300, width: 400, crop: :fill) %>
-          <%= image_tag(user_module.thumbnail_url, height: 150, width: 200, alt: "Module Thumbnail") if user_module.thumbnail_url.present? %>
+          <%= cl_image_tag(training_module.photo.key, height: 300, width: 400, crop: :fill) %>
+
         </div>
         <div class="module-info flex-grow-1 ml-3">
-          <h3><%= user_module.title %></h3>
-          <p><%= truncate(user_module.description, length: 100) %></p>
-          <p>Last accessed: <%= user_module.last_accessed_at&.strftime("%B %d, %Y") || 'Never' %></p>
+          <h3><%= training_module.name %></h3>
+
+          <p>Updated at: <%= training_module.updated_at.strftime("%B %d, %Y") || 'Never' %></p>
         </div>
         <div class="module-actions">
-          <% if user_module.completed? %>
-            <%= link_to "Review", module_path(user_module), class: "btn btn-secondary" %>
-          <% else %>
-            <%= link_to "Continue", module_path(user_module), class: "btn btn-primary" %>
-          <% end %>
+
+            <%= link_to "Continue", training_module_path(training_module), class: "btn btn-primary" %>
+
         </div>
       </div>
     </div>

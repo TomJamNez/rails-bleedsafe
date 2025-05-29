@@ -4,13 +4,17 @@
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><%= link_to "Home", root_path %></li>
-      <li class="breadcrumb-item active" aria-current="page">Health & Safety Training</li>
+      <li class="breadcrumb-item active" aria-current="page">Emergency Training</li>
     </ol>
   </nav>
 
   <div class="d-flex flex-row justify-content-evenly">
     <div>
-      <%= image_tag("bleed_safe_banner.jpg", height: 300, width: 400, alt: "Emergency Training") %>
+      <%= cl_image_tag(@training_module.photo.key, height: 300, width: 400, crop: :fill) %>
+
+        </div>
+        <div class="module-info flex-grow-1 ml-3">
+          <h3><%= @training_module.name %></h3>
     </div>
     <div class="card form" style="width:100%;">
       <div class="card-body">
@@ -19,8 +23,6 @@
           Enhance your knowledge on emergency safety tips with our free online modules. These resources are designed to help you understand essential emergency practices.
         </p>
         <ul>
-          <li><%= link_to "Stab Wound", "https://www.bleedsafe.com/stab-wound.html" %></li>
-          <li><%= link_to "CPR", "" %></li>
 
       </div>
     </div>
@@ -31,17 +33,5 @@
   </div>
 
   <br><br><br>
-  <!--<h2>Your Training History</h2>
 
-  <% if @enrollments.empty? %>
-    <p>You have not enrolled in any courses yet.</p>
-  <% else %>
-    <% @enrollments.each do |enrollment| %>
-      <div class="card-booking-history border p-4" style="background-color:#ddffdd;">
-        <h3><%= enrollment.course_selection %> - Enrolled on <%= enrollment.created_at.strftime("%B %d, %Y") %></h3>
-        <p>Status: <%= enrollment.completed ? "Completed" : "In Progress" %></p>
-      </div>
-      <br>
-    <% end %>
-  <% end %> -->
 </div>
