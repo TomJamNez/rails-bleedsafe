@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
 
   devise_for :users
-  root to: "pages#home"
+  controller :pages do
+    root to: "pages#home"
+    get :faq
+    get :dashboard
+    get :about_us
+  end
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -13,13 +19,7 @@ Rails.application.routes.draw do
 
   resources :training_modules, only: [:index, :show, :new, :create, :edit, :update] do
     resources :training_topics, only: [:show, :new, :create, :edit, :update] do
-      resources :training_progress, only: [:create, :update] do
-          member do
-          patch 'in-progress'
-          patch 'completed'
-          end
-	    end
-      resources :training_pages, only: [:create,  :update]
+       resources :training_pages, only: [:create,  :update]
       end
   end
 
@@ -29,6 +29,11 @@ resources :emergency_modules, only: [:index, :show, :new, :create, :edit, :updat
       end
   end
 
-
+resources :training_progress, only: [:create, :update] do
+  member do
+    patch 'in-progress'
+    patch 'completed'
+  end
+end
 
 end
