@@ -19,18 +19,24 @@ before_action :topic_lookup, only: %i[create update]
 
   end
 
+  def edit
+    @emergency_page = EmergencyPage.find(params[:id])
+  end
+
   def update
 
     @emergency_page = EmergencyPage.find(params[:id])
     @emergency_page.user = current_user
     if @emergency_page.update(page_params)
        #we are already on this page, so full refresh is not appropriate, fix with time permitting
-      redirect_to emergency_module_emergency_topic_path(@emergency_topic)
+      redirect_to emergency_module_emergency_topic_path(@emergency_module, @emergency_topic)
       else
       render :edit, status: :unprocessable_entity
     end
 
   end
+
+
 
   private
   def page_params
