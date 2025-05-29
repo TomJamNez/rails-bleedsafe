@@ -1,0 +1,32 @@
+<div id="carouselPages" class="carousel slide">
+  <div class="carousel-inner">
+  <% @courasel = 0 %>
+    <% @emergency_pages.each do |emergency_page| %>
+    <% if @courasel == 0 %>
+      <div class="carousel-item active">
+    <% else %>
+      <div class="carousel-item">
+    <% end %>
+    <% @courasel = @courasel + 1 %>
+      <div class="card card-container m-3">
+        <div class="card-header">
+          <h5 class="card-title"><%= emergency_page.title %></h5>
+        </div>
+        <%= cl_image_tag(emergency_page.photo.key, height: 300, width: 400, crop: :fill) %>
+      <p class="card-text ps-3 pb-3"><%= emergency_page.step %></p>
+
+    </div>
+   </div>
+
+  <% end%>
+</div>
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselPages" data-bs-slide="prev" style="background-image:invert(1);">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselPages" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>

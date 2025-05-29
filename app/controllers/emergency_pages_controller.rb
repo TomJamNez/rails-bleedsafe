@@ -12,11 +12,15 @@ before_action :topic_lookup, only: %i[create update]
     if @emergency_page.save
       #sort redirect back to object instead of index, leaving like this as easier for people to learn what the app is doing. This is admin only so not important
       #we are already on this page, so full refresh is not appropriate, fix with time permitting
-      redirect_to emergency_module_emergency_topic_path(@emergency_topic)
+      redirect_to emergency_module_emergency_topic_path(@emergency_module, @emergency_topic)
     else
       render :new, status: :unprocessable_entity
     end
 
+  end
+
+  def edit
+    @emergency_page = EmergencyPage.find(params[:id])
   end
 
   def update
@@ -25,12 +29,14 @@ before_action :topic_lookup, only: %i[create update]
     @emergency_page.user = current_user
     if @emergency_page.update(page_params)
        #we are already on this page, so full refresh is not appropriate, fix with time permitting
-      redirect_to emergency_module_emergency_topic_path(@emergency_topic)
+      redirect_to emergency_module_emergency_topic_path(@emergency_module, @emergency_topic)
       else
       render :edit, status: :unprocessable_entity
     end
 
   end
+
+
 
   private
   def page_params
@@ -39,9 +45,11 @@ before_action :topic_lookup, only: %i[create update]
 
   def topic_lookup
     @emergency_topic = EmergencyTopic.find(params[:emergency_topic_id])
+    @emergency_module = EmergencyModule.find(params[:emergency_module_id])
   end
 
   def module_lookup
+
   end
 
 end
