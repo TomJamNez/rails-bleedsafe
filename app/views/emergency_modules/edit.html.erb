@@ -16,7 +16,7 @@
 
 <div class="container-lg border form mt-4">
 <p>Current Image</p>
- <%= cl_image_tag(@emergency_module.photo.key, height: 300, width: 400, crop: :fill) %>
+ <%= cl_image_tag(@emergency_module.photo.key, height: 300, width: 400, crop: :fill) if @emergency_module.photo.attached?  %>
 
 <%= simple_form_for @emergency_module do |f| %>
   <%= f.input :name %>

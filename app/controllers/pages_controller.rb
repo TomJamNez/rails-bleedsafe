@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [ :home, :faq, :about_us]
+  skip_before_action :authenticate_user!, only: [ :home, :questions, :about_us]
 
   def home
   end
@@ -7,7 +7,8 @@ class PagesController < ApplicationController
   def dashboard
   end
 
-  def faq
+  def questions
+    @questions = Faq.all.order(order: :asc)
   end
 
   def about_us
