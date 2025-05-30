@@ -1,9 +1,35 @@
 
 <div class="container">
+
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><%= link_to "Home", root_path %></li>
+      <li class="breadcrumb-item active" aria-current="page">FAQs</li>
+    </ol>
+  </nav>
+
+<h2 class="m-3">Frequently Asked Questions</h2>
 <% @questions.each do |question| %>
-  <div class="card mt-3">
-    <h5 class="card-title ps-3">Question: <%= question.question %></h5>
-    <p class="card-text ps-3">Answer: <%= question.answer %></p>
+ <button class="accordion"><%= question.question %></button>
+  <div class="panel">
+    <p><%= question.answer %></p>
   </div>
 <% end %>
 </div>
+
+<script>
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active-accordian");
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+}
+</script>
