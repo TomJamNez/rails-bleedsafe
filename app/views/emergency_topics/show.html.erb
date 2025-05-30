@@ -18,7 +18,7 @@
     <div class="card-header">
       <h5 class="card-title"><%= @emergency_topic.name %></h5>
     </div>
-    <%= cl_image_tag(@emergency_topic.photo.key, height: 300, width: 400, crop: :fill) %>
+    <%= cl_image_tag(@emergency_topic.photo.key, height: 300, width: 400, crop: :fill) if @emergency_topic.photo.attached? %>
     <p class="card-text ps-3">Description:  <%= @emergency_topic.description %></p>
     <% if @emergency_topic.active == true  %>
         <p class="card-text ps-3">Status: Active </p>
@@ -38,7 +38,7 @@
       <div class="card-header">
         <h5 class="card-title"><%= emergency_page.title %></h5>
       </div>
-      <%= cl_image_tag(emergency_page.photo.key, height: 300, width: 400, crop: :fill) %>
+      <%= cl_image_tag(emergency_page.photo.key, height: 300, width: 400, crop: :fill) if emergency_page.photo.attached? %>
       <p class="card-text ps-3">Instructions: <%= emergency_page.step %></p>
       <% if emergency_page.active == true  %>
         <p class="card-text ps-3">Status: Active </p>

@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
   controller :pages do
     root to: "pages#home"
-    get :faq
+    get :questions
     get :dashboard
     get :about_us
   end
@@ -35,5 +35,7 @@ resources :training_progress, only: [:create, :update] do
     patch 'completed'
   end
 end
+
+resources :faqs, only: [:index, :create, :edit, :update, :destroy]
 
 end

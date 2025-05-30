@@ -1,0 +1,9 @@
+
+<div class="container">
+<% @questions.each do |question| %>
+  <div class="card mt-3">
+    <h5 class="card-title ps-3">Question: <%= question.question %></h5>
+    <p class="card-text ps-3">Answer: <%= question.answer %></p>
+  </div>
+<% end %>
+</div>
