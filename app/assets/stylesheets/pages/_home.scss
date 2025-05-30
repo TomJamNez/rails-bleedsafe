@@ -1,1 +1,62 @@
-// Specific CSS for your home-page
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans&display=swap');
+
+
+body {
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+  background-color: #b7c3d9;
+  color: #1F2937;
+}
+
+/* Header Gradient */
+.header-gradient {
+  background: linear-gradient(135deg, #1E3A8A 0%, #3B82F6 100%);
+}
+
+
+/* Hero Gradient */
+.hero-gradient {
+  background: linear-gradient(135deg, #b21f1f 0%, #e77503 100%);
+}
+.hero h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+.hero p {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+}
+
+
+/* Content Cards */
+.content {
+  background-color: #FFFFFF;
+}
+
+
+/* Footer Gradient */
+.footer-gradient {
+  background: linear-gradient(135deg, #b21f1f 0%, #e77503 100%);
+}
+
+
+ .cta-button, .card-btn {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 0.5rem;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  background: linear-gradient(to right, #1D976C 0%, #93F9B9  51%, #1D976C  100%);
+  color: #0b0b0b;
+}
+
+/* Primary call-to-action */
+.cta-button {
+  background:linear-gradient(to right, #1A2980 0%, #26D0CE  51%, #1A2980  100%);
+  color: #FFFFFF;
+}
+.cta-button:hover {
+  background-color: #551aca;
+  transform: translateY(-2px);
+}
