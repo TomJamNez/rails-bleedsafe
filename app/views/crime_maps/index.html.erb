@@ -1,0 +1,48 @@
+<h1>CrimeMaps#index</h1>
+<p>Find me in app/views/crime_maps/index.html.erb</p>
+
+
+<div class="row justify-content-center">
+  <div class="col-sm-8 my-3">
+    <%= form_with url: crime_maps_path, method: :get, class: "d-flex" do %>
+      <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "Type a keyword"
+        %>
+      <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
+
+<div class="container">
+  Latitude: <%= @address_latitude %> <br>
+  Longitude: <%= @address_longitude %><br>
+  Full_address from API: <%= @address_used %><br>
+  Poly_map_string: <%= @poly_map_string %>
+
+  <table class="table">
+    <tr>
+      <th>Crime Category</th>
+      <th>Latitude</th>
+      <th>Longitude</th>
+      <th>Location Description</th>
+      <th>Street ID</th>
+      <th>Outcome Category</th>
+    </tr>
+  <% @crime_lookups.each do |crime_lookup|%>
+    <tr>
+      <td><%= crime_lookup["category"] %></td>
+      <td><%= crime_lookup["location"]["latitude"] %></td>
+      <td><%= crime_lookup["location"]["longitude"] %></td>
+      <td><%= crime_lookup["location"]["street"]["name"] %></td>
+      <td><%= crime_lookup["location"]["street"]["id"] %></td>
+    <% if crime_lookup["outcome_status"] == nil %>
+      <td>No Outcome Added</td>
+      <% else %>
+      <td><%= crime_lookup["outcome_status"]["category"] %></td>
+      <% end %>
+      </tr>
+    <% end %>
+  </table>
+</div>

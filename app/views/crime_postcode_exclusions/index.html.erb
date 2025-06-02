@@ -1,0 +1,14 @@
+<div class="container">
+<h1>Crime Map Postcode Exclusions</h1>
+<p>This table is for preventing access to crime statistics or diverting to different APIs based on postcode</p>
+  <table>
+    <tr>
+      <th>Postcode</th>
+    </tr>
+    <% @crime_postcode_exclusions.each do |crime_postcode_exclusion| %>
+    <tr>
+      <td><%= crime_postcode_exclusion.postcode %>  </td>
+    </tr>
+    <% end %>
+  </table>
+</div>
