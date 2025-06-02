@@ -13,6 +13,12 @@ class CrimeMapsController < ApplicationController
      @address_used = @address["features"][0]["properties"]["full_address"]
      @poly_map_string = poly_map(@address_latitude, @address_longitude)
      @crime_lookups = police_data(@poly_map_string)
+           @markers = @crime_lookups.map do |crime_lookup|
+        {
+          lat: crime_lookup["location"]["latitude"],
+          lng: crime_lookup["location"]["longitude"]
+        }
+      end
 
     else
      @address_latitude = current_user.latitude
@@ -20,6 +26,13 @@ class CrimeMapsController < ApplicationController
      @address_used = current_user.longitude
      @poly_map_string = poly_map(@address_latitude, @address_longitude)
      @crime_lookups = police_data(@poly_map_string)
+      @markers = @crime_lookups.map do |crime_lookup|
+        {
+          lat: crime_lookup["location"]["latitude"],
+          lng: crime_lookup["location"]["longitude"]
+        }
+      end
+
     end
   end
 
