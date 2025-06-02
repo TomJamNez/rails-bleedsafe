@@ -1,6 +1,6 @@
 class FaqsController < ApplicationController
   def index
-    @faqs = Faq.all
+    @faqs = Faq.all.order(position: :asc)
     @faq = Faq.new
   end
 
@@ -26,6 +26,24 @@ class FaqsController < ApplicationController
       else
       render :edit, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @faq = Faq.find(params[:id])
+    @faq.destroy
+    redirect_to faqs_path, status: :see_other
+  end
+
+  def move_up
+    faq = Faq.find(params[:id])
+    faq.move_higher
+    redirect_to faqs_path
+  end
+
+  def move_down
+    faq = Faq.find(params[:id])
+    faq.move_lower
+    redirect_to faqs_path
   end
 
   private

@@ -8,7 +8,7 @@ class PagesController < ApplicationController
   end
 
   def questions
-    @questions = Faq.all.order(order: :asc)
+    @questions = Faq.all.order(position: :asc)
   end
 
   def about_us

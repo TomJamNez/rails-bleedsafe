@@ -36,6 +36,10 @@ resources :training_progress, only: [:create, :update] do
   end
 end
 
-resources :faqs, only: [:index, :create, :edit, :update, :destroy]
-
+resources :faqs, only: [:index, :create, :edit, :update, :destroy] do
+  member do
+    patch :move_up
+    patch :move_down
+  end
+end
 end
