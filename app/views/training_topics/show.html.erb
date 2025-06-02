@@ -1,2 +1,70 @@
-<h1>TrainingTopics#show</h1>
-<p>Find me in app/views/training_topics/show.html.erb</p>
+<div class="container">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><%= link_to "Dashboard", dashboard_path %></li>
+      <li class="breadcrumb-item"><%= link_to "Training Modules", training_modules_path %></li>
+      <li class="breadcrumb-item">
+        <%= link_to training_module_path(@training_module) do %>
+          <%= @training_topic.name %>
+        <% end %>
+      </li>
+      <li class="breadcrumb-item active" aria-current="page"> <%= @training_topic.name %></li>
+    </ol>
+  </nav>
+</div>
+
+<div class="container">
+    <div class="card card-container">
+    <div class="card-header">
+      <h5 class="card-title"><%= @training_topic.name %></h5>
+    </div>
+    <%= cl_image_tag(@training_topic.photo.key, height: 300, width: 400, crop: :fill) if @training_topic.photo.attached? %>
+    <p class="card-text ps-3">Description:  <%= @training_topic.description %></p>
+    <% if @training_topic.active == true  %>
+        <p class="card-text ps-3">Status: Active </p>
+      <% else %>
+        <p class="card-text ps-3">Status: Disabled </p>
+      <% end %>
+    <p class="card-text ps-3">Last updated by <%= @training_topic.user.email  %></p>
+    <%=link_to "edit", edit_training_module_training_topic_path(@training_topic), class: "btn btn-primary" %>
+</div>
+<br>
+<br>
+<br>
+<!-- editing  Ideally, there would be an edit button that changes the page into a form, however, time and resource. So changing the method entirely to edit/new may be quicker and easier. For now, only allows new pages-->
+
+  <% @training_pages.each do |training_page| %>
+    <div class="card card-container m-3">
+      <div class="card-header">
+        <h5 class="card-title"><%= training_page.title %></h5>
+      </div>
+      <%= cl_image_tag(training_page.photo.key, height: 300, width: 400, crop: :fill) if training_page.photo.attached? %>
+      <p class="card-text ps-3">Instructions: <%= training_page.step %></p>
+      <% if training_page.active == true  %>
+        <p class="card-text ps-3">Status: Active </p>
+      <% else %>
+        <p class="card-text ps-3">Status: Disabled </p>
+      <% end %>
+      <p class="card-text ps-3 pb-4">Last updated by <%= training_page.user.email %></p>
+    </div>
+  <% end %>
+<br>
+
+<h3>User Journey Carousel Preview - Mobile like</h3>
+<br>
+<br>
+
+<div style="width:350px;">
+<%= render 'training_topics/carousel' %>
+</div>
+<div class="card form-pages p-4 m-3">
+  <h2>Create Page</h2>
+    <%= simple_form_for [@training_module, @training_topic, @training_page] do |f| %>
+      <%= f.input :title %>
+      <%= f.input :step %>
+      <%= f.input :photo, as: :file %>
+      <%= f.input :active %>
+      <%= f.button :submit, "Submit", class: "btn btn-primary m-3"%>
+    <% end %>
+</div>
+</div>
