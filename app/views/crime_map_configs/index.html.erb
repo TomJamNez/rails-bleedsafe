@@ -1,0 +1,17 @@
+
+<div class="container">
+<h1>Crime Map Configuration</h1>
+<p>This table is to for managing the crime map sytem configuration items, including the build of a polymap</p>
+  <table>
+    <tr>
+      <th>Key</th>
+      <th>Value</th>
+    </tr>
+    <% @crime_map_configs.each do |crime_map_config| %>
+    <tr>
+      <td><%= crime_map_config.key %>  </td>
+      <td><%= crime_map_config.value %></td>
+    </tr>
+    <% end %>
+  </table>
+</div>
