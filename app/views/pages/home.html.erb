@@ -1,11 +1,17 @@
-
 <turbo-frame id="main_content">
-  <section class="hero hero-gradient text-center text-white py-5">
-    <h1>BleedSafe</h1>
-    <p>Empowering youth with essential emergency strategies for real-world situations.</p>
-    <%= link_to "Get Started", training_modules_path,
-        class: "btn cta-button",
-        data: { turbo_frame: "main_content" } %>
+  <section class="hero hero-gradient text-center text-white py-5 position-relative overflow-hidden">
+    <div class="hero-content position-relative z-1">
+      <h1>Welcome to Bleed Safe</h1>
+      <p>Empowering youth with essential emergency strategies for real-world situations.</p>
+      <%= link_to "Get Started", training_modules_path,
+          class: "btn cta-button",
+          data: { turbo_frame: "main_content" } %>
+    </div>
+
+    <!-- SVG Wave -->
+    <svg class="hero-wave position-absolute bottom-0 start-0 w-100" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 150" preserveAspectRatio="none">
+      <path fill="#f8f9fa" d="M0,96 C360,192 1080,0 1440,96 L1440,150 L0,150 Z"></path>
+    </svg>
   </section>
 
   <!-- Quick Links Cards -->
