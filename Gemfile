@@ -52,6 +52,9 @@ gem "simple_form", github: "heartcombo/simple_form"
 gem "sassc-rails"
 gem "cloudinary"
 
+#MORE ADDONS
+gem "acts_as_list" # For managing ordered lists [FAQS]
+
 
 group :development, :test do
   gem "dotenv-rails"
