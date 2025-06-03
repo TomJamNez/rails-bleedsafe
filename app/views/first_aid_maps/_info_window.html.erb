@@ -1,0 +1,13 @@
+<div class="first-aid-popup">
+  <h5><%= map.name %></h5>
+  <p><i class="bi bi-geo-alt"></i> <%= map.address %></p>
+
+  <% if map.description.present? %>
+    <p class="mt-2"><%= map.description %></p>
+  <% end %>
+
+  <div class="btn-group mt-2">
+    <%= link_to 'View', map, class: 'btn btn-sm btn-outline-primary' %>
+    <%= link_to 'Edit', edit_first_aid_map_path(map), class: 'btn btn-sm btn-outline-secondary' %>
+  </div>
+</div>

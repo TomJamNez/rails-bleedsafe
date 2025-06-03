@@ -1,39 +1,53 @@
 class FirstAidMapsController < ApplicationController
+  before_action :set_map, only: [:edit, :update, :destroy]
+
   def index
     @first_aid_maps = FirstAidMap.all
+    @markers = @first_aid_maps.map do |map|
+      {
+        lat: map.latitude,
+        lng: map.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { map: map }),
+      }
+    end
+  end
+
+  def new
+    @first_aid_map = FirstAidMap.new
   end
 
   def create
-    @first_aid_map = FirstAidMap.new(first_aid_map_params)
+    @first_aid_map = FirstAidMap.new(map_params)
     if @first_aid_map.save
-      redirect_to first_aid_maps_path
+      redirect_to first_aid_maps_path, notice: 'Location added successfully'
     else
-      render :index, status: :unprocessable_entity
+      render :new
     end
   end
 
   def edit
-    @first_aid_map = FirstAidMap.find(params[:id])
   end
 
   def update
-    @first_aid_map = FirstAidMap.find(params[:id])
-    if @first_aid_map.update(first_aid_map_params)
-      redirect_to first_aid_maps_path
+    if @first_aid_map.update(map_params)
+      redirect_to first_aid_maps_path, notice: 'Location updated'
     else
-      render :edit, status: :unprocessable_entity
+      render :edit
     end
   end
 
   def destroy
-    @first_aid_map = FirstAidMap.find(params[:id])
     @first_aid_map.destroy
-    redirect_to first_aid_maps_path, status: :see_other
+    redirect_to first_aid_maps_path, notice: 'Location removed'
   end
 
   private
 
-  def first_aid_map_params
-    params.require(:first_aid_map).permit(:name, :address, :latitude, :longitude, :category, :description)
+  def set_map
+    @first_aid_map = FirstAidMap.find(params[:id])
+  end
+
+  def map_params
+    params.require(:first_aid_map).permit(:name, :address, :category, :description, :latitude, :longitude)
   end
 end

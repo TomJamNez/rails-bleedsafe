@@ -9,7 +9,7 @@
 }
 
 .navbar-lewagon .navbar-nav {
-  gap: 12px; /* Space between buttons */
+  gap: 12px;
   margin-right: 50px;
 }
 
@@ -36,7 +36,6 @@
   align-items: center;
 }
 
-/* New outline button style */
 .navbar-lewagon .btn-outline-danger.nav-btns {
   background-color: transparent;
   border: 2px solid #ea1e21;
@@ -63,7 +62,6 @@
   color: #ea1e21 !important;
 }
 
-/* Avatar styling */
 .navbar-lewagon .avatar {
   width: 40px;
   height: 40px;
