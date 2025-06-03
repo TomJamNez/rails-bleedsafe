@@ -14,20 +14,21 @@
 </div>
 
 <div class="container">
+<% if current_user.admin == true %>
     <div class="card card-container">
-    <div class="card-header">
-      <h5 class="card-title"><%= @emergency_topic.name %></h5>
+      <div class="card-header">
+        <h5 class="card-title"><%= @emergency_topic.name %></h5>
+      </div>
+      <%= cl_image_tag(@emergency_topic.photo.key, height: 300, width: 400, crop: :fill) if @emergency_topic.photo.attached? %>
+      <p class="card-text ps-3">Description:  <%= @emergency_topic.description %></p>
+      <% if @emergency_topic.active == true  %>
+          <p class="card-text ps-3">Status: Active </p>
+        <% else %>
+          <p class="card-text ps-3">Status: Disabled </p>
+        <% end %>
+      <p class="card-text ps-3">Last updated by <%= @emergency_topic.user.email  %></p>
+      <%=link_to "edit", edit_emergency_module_emergency_topic_path(@emergency_topic), class: "btn btn-primary" %>
     </div>
-    <%= cl_image_tag(@emergency_topic.photo.key, height: 300, width: 400, crop: :fill) if @emergency_topic.photo.attached? %>
-    <p class="card-text ps-3">Description:  <%= @emergency_topic.description %></p>
-    <% if @emergency_topic.active == true  %>
-        <p class="card-text ps-3">Status: Active </p>
-      <% else %>
-        <p class="card-text ps-3">Status: Disabled </p>
-      <% end %>
-    <p class="card-text ps-3">Last updated by <%= @emergency_topic.user.email  %></p>
-    <%=link_to "edit", edit_emergency_module_emergency_topic_path(@emergency_topic), class: "btn btn-primary" %>
-</div>
 <br>
 <br>
 <br>
@@ -50,13 +51,7 @@
   <% end %>
 <br>
 
-<h3>User Journey Carousel Preview - Mobile like</h3>
-<br>
-<br>
 
-<div style="width:350px;">
-<%= render 'emergency_topics/carousel' %>
-</div>
 <div class="card form-pages p-4 m-3">
   <h2>Create Page</h2>
     <%= simple_form_for [@emergency_module, @emergency_topic, @emergency_page] do |f| %>
@@ -67,4 +62,16 @@
       <%= f.button :submit, "Submit", class: "btn btn-primary m-3"%>
     <% end %>
 </div>
+
+
+  <h3>User Journey Carousel Preview - Mobile like</h3>
+<br>
+<br>
+  <div style="width:350px;">
+    <%= render 'emergency_topics/carousel' %>
+  </div>
+<% else %>
+  <%= render 'emergency_topics/carousel' %>
+<% end %>
+
 </div>

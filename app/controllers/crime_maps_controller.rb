@@ -23,7 +23,7 @@ class CrimeMapsController < ApplicationController
     else
      @address_latitude = current_user.latitude
      @address_longitude = current_user.longitude
-     @address_used = current_user.longitude
+     @address_used = current_user.address
      @poly_map_string = poly_map(@address_latitude, @address_longitude)
      @crime_lookups = police_data(@poly_map_string)
       @markers = @crime_lookups.map do |crime_lookup|

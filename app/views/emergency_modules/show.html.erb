@@ -7,7 +7,7 @@
       <li class="breadcrumb-item active" aria-current="page"><%= @emergency_module.name %></li>
     </ol>
   </nav>
-
+<% if current_user.admin == true %>
   <div class="card card-container">
     <div class="card-header">
       <h3 class="card-title"><%= @emergency_module.name %></h3>
@@ -23,13 +23,12 @@
       <%=link_to "edit", edit_emergency_module_path(@emergency_module), class: "btn btn-primary" %>
   </div>
   <br>
-  <h2><%= @emergency_module.name %> Topics</h2>
-  <%=link_to new_emergency_module_emergency_topic_path(@emergency_module), class: "btn btn-primary mt-3" do  %>
+    <%=link_to new_emergency_module_emergency_topic_path(@emergency_module), class: "btn btn-primary mt-3" do  %>
     Add new type of <%=@emergency_module.name %>
   <% end %>
-<br>
-<br>
-<br>
+
+<% end %>
+<h2><%= @emergency_module.name %> Topics</h2>
   <div class= "cards-module">
     <% @emergency_topics.each do |emergency_topic| %>
       <div class="card card-container m-3">
