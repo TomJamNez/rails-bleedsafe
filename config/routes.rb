@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'crime_maps/index'
+  get 'crime_postcode_exclusions/index'
+  get 'system_configs/index'
 
   devise_for :users
   controller :pages do
@@ -43,5 +46,19 @@ Rails.application.routes.draw do
     end
   end
 
+
   resources :first_aid_maps, only: [:index, :create, :edit, :update, :destroy]
+
+  resources :faqs, only: [:index, :create, :edit, :update, :destroy] do
+    member do
+      patch :move_up
+      patch :move_down
+    end
+  end
+
+  resources :crime_map_configs, only: [:index]
+  resources :crime_postcode_exclusions, only:[:index]
+  resources :crime_maps, only:[:index]
+
+
 end

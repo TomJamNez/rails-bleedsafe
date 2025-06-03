@@ -1,0 +1,2 @@
+class CrimeMapConfig < ApplicationRecord
+end
