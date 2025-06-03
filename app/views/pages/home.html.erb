@@ -1,4 +1,4 @@
-<turbo-frame id="main_content">
+
   <section class="hero hero-gradient text-center text-white py-5 position-relative overflow-hidden">
     <div class="hero-content position-relative z-1">
       <h1>Welcome to Bleed Safe</h1>
@@ -26,7 +26,7 @@
 
       <% quick_links.each do |link| %>
         <div class="col-sm-6 col-md-4 d-flex">
-          <div class="card flex-fill">
+          <div class="card card-home flex-fill">
             <div class="card-body text-center">
               <h5 class="card-title"><%= link[:title] %></h5>
               <p class="card-text"><%= link[:body] %></p>
@@ -39,4 +39,3 @@
       <% end %>
     </div>
   </section>
-</turbo-frame>
