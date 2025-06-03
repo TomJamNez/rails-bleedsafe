@@ -1,37 +1,51 @@
-<h1>Our Training Modules</h1>
-<p>Below are our training modules to help you get started:</p>
 <div class="container">
+
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><%= link_to "Home", root_path %></li>
-      <li class="breadcrumb-item active" aria-current="page">Emergency Training</li>
+      <li class="breadcrumb-item"><%= link_to "Dashboard", dashboard_path %></li>
+      <li class="breadcrumb-item"><%= link_to "training Modules", training_modules_path%></li>
+      <li class="breadcrumb-item active" aria-current="page"><%= @training_module.name %></li>
     </ol>
   </nav>
-
-  <div class="d-flex flex-row justify-content-evenly">
-    <div>
-      <%= cl_image_tag(@training_module.photo.key, height: 100, width: 200, crop: :fill) %>
-
-        </div>
-        <div class="module-info flex-grow-1 ml-3">
-          <h3><%= @training_module.name %></h3>
-    </div>
-    <div class="card form" style="width:100%;">
-      <div class="card-body">
-        <h2>Welcome to Your Bleed Safe Training</h2>
-        <p class="card-text">
-          Enhance your knowledge on emergency safety tips with our free online modules. These resources are designed to help you understand essential emergency practices.
-        </p>
-        <ul>
-
+<% if current_user.admin == true %>
+  <div class="card card-container">
+    <div class="card-header">
+      <h3 class="card-title"><%= @training_module.name %></h3>
       </div>
-    </div>
+      <%= cl_image_tag(@training_module.photo.key, height: 300, width: 400, crop: :fill) if @training_module.photo.attached? %>
+      <h3 class="ps-3">Admin Data</h3>
+      <% if @training_module.active == true  %>
+        <p class="card-text ps-3">Status: Active </p>
+      <% else %>
+        <p class="card-text ps-3">Status: Disabled </p>
+      <% end %>
+         <%=link_to "edit", edit_training_module_path(@training_module), class: "btn btn-primary" %>
   </div>
-
   <br>
-  <div class="border order-form mt-4 p-3">
+    <%=link_to new_training_module_training_topic_path(@training_module), class: "btn btn-primary mt-3" do  %>
+    Add new type of <%=@training_module.name %>
+  <% end %>
+
+<% end %>
+<h2><%= @training_module.name %> Topics</h2>
+  <div class= "cards-module">
+    <% @training_topics.each do |training_topic| %>
+      <div class="card card-container m-3">
+        <div class="card-header">
+      <h5 class="card-title"><%= training_topic.name %></h5>
+    </div>
+    <%=link_to training_module_training_topic_path(@training_module, training_topic) do %>
+      <%= cl_image_tag(training_topic.photo.key, height: 300, width: 400, crop: :fill) if training_topic.photo.attached?  %>
+    <% end %>
+      <% if training_topic.active == true  %>
+        <p class="card-text ps-3">Status: Active </p>
+      <% else %>
+        <p class="card-text ps-3">Status: Disabled </p>
+      <% end %>
+
+
   </div>
+<% end %>
 
-  <br><br><br>
-
+  </div>
 </div>

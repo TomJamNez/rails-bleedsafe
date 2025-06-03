@@ -5,7 +5,7 @@
 
     def show
       @training_module = TrainingModule.find(params[:id])
-      @topics = @training_module.training_topics.all
+      @training_topics = @training_module.training_topics.all
     end
 
     def new
