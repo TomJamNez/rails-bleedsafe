@@ -55,3 +55,14 @@ CrimePostcodeExclusion.create!(postcode: "TD")
 CrimePostcodeExclusion.create!(postcode: "ZE")
 
 puts "completed crime map config seeding"
+
+puts "creating admin user"
+user = User.new
+user.email = "admin@bleedsafe.com"
+user.password = "something"
+user.admin = true
+user.latitude = 51.88093
+user.longitude = 0.8788
+user.address = "28 Audley Road, Colchester, CO3 3TY"
+user.save!(validate: false)
+puts "user created"
