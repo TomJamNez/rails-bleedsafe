@@ -1,13 +1,13 @@
 
-<br>
-<div class="container">
-<div class="cards-dashboard">
-<%=link_to "Training Modules", training_modules_path, class: "btn btn-success btn-dashboard mt-4" %>
-<%=link_to "Emergency Modules", emergency_modules_path, class: "btn btn-success btn-dashboard mt-4" %>
-<%=link_to "Crime Map", crime_maps_path, class: "btn btn-success btn-dashboard mt-4" %>
-<%=link_to "Crime Map Setting", crime_map_configs_path, class: "btn btn-success btn-dashboard mt-4" %>
-<%=link_to "Postcode exclusions", crime_postcode_exclusions_path, class: "btn btn-success btn-dashboard mt-4" %>
-<%=link_to "First Aid Maps", first_aid_maps_path, class: "btn btn-success btn-dashboard mt-4" %>
-<%=link_to "Edit FAQs", faqs_path, class: "btn btn-success btn-dashboard mt-4" %>
-</div>
-</div>
+    <!-- SVG Wave -->
+<svg class="hero-wave position-absolute bottom-0 start-0 w-100" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 150" preserveAspectRatio="none">
+  <path fill="#f8f9fa" d="M0,96 C360,192 1080,0 1440,96 L1440,150 L0,150 Z"></path>
+  </svg>
+</section>
+
+  <!-- User Quick Links Cards -->
+    <% if current_user.admin == true %>
+      <%= render "pages/dashboard_admin" %>
+    <% else %>
+      <%= render "pages/dashboard_user" %>
+    <% end %>

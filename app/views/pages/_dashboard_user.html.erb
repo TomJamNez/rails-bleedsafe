@@ -1,0 +1,26 @@
+<section id="quick-links" class="container py-5">
+ <h2 class="text-center mb-4">Dashboard</h2>
+   <div class="row gy-4">
+
+      <% quick_links = [
+           { title: "Training Modules", path: training_modules_path, style: "primary", body: "Train to deal with real life emergencies" },
+           { title: "Emergency Modules", path: emergency_modules_path, style: "secondary", body: "Quick access to guides during an emergency" },
+           { title: "First Aid Map", path: first_aid_maps_path, style: "info", body: "Find out about local services in your area" },
+           { title: "Crime Map", path: crime_maps_path, style: "info", body: "Find out about recent crime in areas you visit" }
+         ] %>
+
+     <% quick_links.each do |link| %>
+        <div class="col-sm-6 col-md-4 d-flex">
+          <div class="card flex-fill">
+            <div class="card-body text-center">
+              <h5 class="card-title"><%= link[:title] %></h5>
+              <p class="card-text"><%= link[:body] %></p>
+              <%= link_to "Go", link[:path],
+                  class: "btn card-btn btn-#{link[:style]}",
+                  data: { turbo_frame: "main_content" } %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </section>
