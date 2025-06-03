@@ -4,7 +4,7 @@
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><%= link_to "Dashboard", dashboard_path %></li>
-      <li class="breadcrumb-item"><%= link_to "Training Topics", training_topics_path%></li>
+      <li class="breadcrumb-item"><%= link_to "Training Topics", training_modules_path%></li>
 
       <li class="breadcrumb-item active" aria-current="page"> New Topic</li>
     </ol>
@@ -13,8 +13,9 @@
 
 
 <div class="container-lg border form mt-4">
-  <%= simple_form_for @training_topic do |f| %>
+  <%= simple_form_for [@training_module, @training_topic] do |f| %>
     <%= f.input :name %>
+     <%= f.input :description %>
     <%= f.input :photo, as: :file %>
     <%= f.button :submit, class: "btn btn-primary mt-4 mb-4" %>
    <% end %>

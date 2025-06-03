@@ -43,7 +43,7 @@ class TrainingTopicsController < ApplicationController
     params.require(:training_topic).permit(:name, :description, :active, :photo)
   end
 
-  def module_look_up
+  def module_lookup
   @training_module = TrainingModule.find(params[:training_module_id])
   end
 end
