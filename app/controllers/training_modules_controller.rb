@@ -27,7 +27,7 @@
       redirect_to training_modules_path
     else
       render :new, status: :unprocessable_entity
-    end
+      end
   end
 
   def update
@@ -45,4 +45,4 @@
   def training_module_params
     params.require(:training_module).permit(:name, :active, :photo)
   end
-end
+  end
