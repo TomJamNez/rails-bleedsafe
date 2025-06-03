@@ -26,28 +26,39 @@ Rails.application.routes.draw do
       end
   end
 
-resources :emergency_modules, only: [:index, :show, :new, :create, :edit, :update] do
-    resources :emergency_topics, only: [:show, :new, :create, :edit, :update] do
-        resources :emergency_pages, only: [:create,  :update]
-      end
+  resources :emergency_modules, only: [:index, :show, :new, :create, :edit, :update] do
+      resources :emergency_topics, only: [:show, :new, :create, :edit, :update] do
+          resources :emergency_pages, only: [:create,  :update]
+        end
+    end
+
+  resources :training_progress, only: [:create, :update] do
+    member do
+      patch 'in-progress'
+      patch 'completed'
+    end
   end
 
-resources :training_progress, only: [:create, :update] do
-  member do
-    patch 'in-progress'
-    patch 'completed'
+  resources :faqs, only: [:index, :create, :edit, :update, :destroy] do
+    member do
+      patch :move_up
+      patch :move_down
+    end
   end
-end
 
-resources :faqs, only: [:index, :create, :edit, :update, :destroy] do
-  member do
-    patch :move_up
-    patch :move_down
+
+  resources :first_aid_maps, only: [:index, :create, :edit, :update, :destroy]
+
+  resources :faqs, only: [:index, :create, :edit, :update, :destroy] do
+    member do
+      patch :move_up
+      patch :move_down
+    end
   end
-end
 
-resources :crime_map_configs, only: [:index]
-resources :crime_postcode_exclusions, only:[:index]
-resources :crime_maps, only:[:index]
+  resources :crime_map_configs, only: [:index]
+  resources :crime_postcode_exclusions, only:[:index]
+  resources :crime_maps, only:[:index]
+
 
 end
