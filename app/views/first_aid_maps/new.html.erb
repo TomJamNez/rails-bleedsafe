@@ -5,6 +5,7 @@
     <%= simple_form_for @first_aid_map do |f| %>
       <%= f.input :name %>
       <%= f.input :address %>
+      <%= f.input :category, collection: ['Hospital', 'First Aid Kit', 'Defibrillator'], prompt: 'Select category' %>
       <%= f.input :latitude %>
       <%= f.input :longitude %>
       <%= f.input :description %>
