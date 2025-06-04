@@ -3,8 +3,8 @@ class FirstAidMap < ApplicationRecord
 
   validates :name, presence: true
   validates :address, presence: true
-  validates :latitude, numericality { allow_nil: true }
-  validates :longitude, numericality { allow_nil: true }
+  validates :latitude, numericality: { allow_nil: true }
+  validates :longitude, numericality: { allow_nil: true }
   validates :category, presence: true
 
   geocoded_by :address

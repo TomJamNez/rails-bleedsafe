@@ -47,7 +47,7 @@ Rails.application.routes.draw do
   end
 
 
-  resources :first_aid_maps, only: [:index, :create, :edit, :update, :destroy]
+  resources :first_aid_maps, only: [:index, :new, :create, :edit, :update, :destroy]
 
   resources :faqs, only: [:index, :create, :edit, :update, :destroy] do
     member do

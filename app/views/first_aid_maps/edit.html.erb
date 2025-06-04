@@ -1,0 +1,14 @@
+<div class="container">
+  <h1 class="mb-4">Edit First Aid Map Location</h1>
+
+  <div class="container-lg border form pt-4">
+    <%= simple_form_for @first_aid_map do |f| %>
+      <%= f.input :name %>
+      <%= f.input :address %>
+      <%= f.input :latitude %>
+      <%= f.input :longitude %>
+      <%= f.input :description, validate: false %>
+      <%= f.button :submit, 'Edit Location', class: "btn btn-primary mt-4 mb-4" %>
+  <% end %>
+  </div>
+</div>

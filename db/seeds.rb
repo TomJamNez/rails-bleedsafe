@@ -8,7 +8,7 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-
+# ___________________________________________CRIME MAP SEED DATA___________________________________________
 puts "deleting CrimeMapConfig"
 CrimeMapConfig.destroy_all
 puts "deleting postcodes"
@@ -66,3 +66,58 @@ user.longitude = 0.8788
 user.address = "28 Audley Road, Colchester, CO3 3TY"
 user.save!(validate: false)
 puts "user created"
+
+# ___________________________________________FIRST AID MAP SEED DATA___________________________________________
+puts "deleting FirstAidMap records"
+FirstAidMap.destroy_all
+
+puts "Creating FirstAidMap records for UK locations"
+locations = [
+  {
+    name: "St Thomas' Hospital",
+    address: "Westminster Bridge Rd, London SE1 7EH",
+    category: "Hospital",
+    description: "Major hospital with A&E department",
+    latitude: 51.4988,
+    longitude: -0.1196
+  },
+  {
+    name: "Manchester Royal Infirmary",
+    address: "Oxford Rd, Manchester M13 9WL",
+    category: "Hospital",
+    description: "Large teaching hospital",
+    latitude: 53.4610,
+    longitude: -2.2275
+  },
+  {
+    name: "Edinburgh Royal Infirmary",
+    address: "51 Little France Cres, Edinburgh EH16 4SA",
+    category: "Hospital",
+    description: "Main hospital in Edinburgh",
+    latitude: 55.9230,
+    longitude: -3.1592
+  },
+  {
+    name: "Cardiff University Hospital",
+    address: "Heath Park, Cardiff CF14 4XW",
+    category: "Hospital",
+    description: "Major teaching hospital in Wales",
+    latitude: 51.5081,
+    longitude: -3.1879
+  },
+  {
+    name: "Belfast City Hospital",
+    address: "Lisburn Rd, Belfast BT9 7AB",
+    category: "Hospital",
+    description: "Large hospital in Northern Ireland",
+    latitude: 54.5781,
+    longitude: -5.9547
+  }
+]
+
+locations.each do |loc|
+  FirstAidMap.create!(loc)
+  puts "Created: #{loc[:name]}"
+end
+
+puts "Successfully created #{locations.size} UK locations!"
