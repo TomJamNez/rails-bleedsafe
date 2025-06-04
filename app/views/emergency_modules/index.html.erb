@@ -8,7 +8,9 @@
     </ol>
   </nav>
 
+  <% if current_user.admin == true %>
   <%=link_to "create emergency module", new_emergency_module_path, class: "btn btn-primary m-3"%>
+  <% end %>
   <div class= "cards-module">
     <% @emergency_modules.each do |emergency_module| %>
       <div class="card card-container">

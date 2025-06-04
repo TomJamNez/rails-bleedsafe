@@ -8,7 +8,9 @@
     </ol>
   </nav>
 
-  <%=link_to "create training module", new_training_module_path, class: "btn btn-primary m-3"%>
+  <% if current_user.admin == true %>
+    <%=link_to "create training module", new_training_module_path, class: "btn btn-primary m-3"%>
+  <% end %>
   <div class= "cards-module">
     <% @training_modules.each do |training_module| %>
       <div class="card card-container">
