@@ -37,29 +37,37 @@
   Poly_map_string: <%= @poly_map_string %>
 <% end %>
 
-  <table class="table mt-3">
-    <tr>
-      <th>Crime Category</th>
-      <th>Latitude</th>
-      <th>Longitude</th>
-      <th>Location Description</th>
-      <th>Street ID</th>
-      <th>Outcome Category</th>
-    </tr>
-  <% @crime_lookups.each do |crime_lookup|%>
-    <tr>
-      <td><%= crime_lookup["category"] %></td>
-      <td><%= crime_lookup["location"]["latitude"] %></td>
-      <td><%= crime_lookup["location"]["longitude"] %></td>
-      <td><%= crime_lookup["location"]["street"]["name"] %></td>
-      <td><%= crime_lookup["location"]["street"]["id"] %></td>
-    <% if crime_lookup["outcome_status"] == nil %>
-      <td>No Outcome Added</td>
-      <% else %>
-      <td><%= crime_lookup["outcome_status"]["category"] %></td>
-      <% end %>
+<div class="table-responsive">
+  <table class="table table-striped table-bordered mt-3">
+    <thead class="table-dark">
+      <tr>
+        <th>Crime Category</th>
+        <th>Latitude</th>
+        <th>Longitude</th>
+        <th>Location Description</th>
+        <th>Street ID</th>
+        <th>Outcome Category</th>
       </tr>
-    <% end %>
+    </thead>
+
+    <tbody>
+      <% @crime_lookups.each do |crime_lookup| %>
+        <tr>
+          <td><%= crime_lookup["category"] %></td>
+          <td><%= crime_lookup["location"]["latitude"] %></td>
+          <td><%= crime_lookup["location"]["longitude"] %></td>
+          <td><%= crime_lookup["location"]["street"]["name"] %></td>
+          <td><%= crime_lookup["location"]["street"]["id"] %></td>
+          <td>
+            <% if crime_lookup["outcome_status"].nil? %>
+              No Outcome Added
+            <% else %>
+              <%= crime_lookup["outcome_status"]["category"] %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
   </table>
 </div>
 
