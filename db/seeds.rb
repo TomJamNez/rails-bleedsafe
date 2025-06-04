@@ -56,16 +56,6 @@ CrimePostcodeExclusion.create!(postcode: "ZE")
 
 puts "completed crime map config seeding"
 
-puts "creating admin user"
-user = User.new
-user.email = "admin@bleedsafe.com"
-user.password = "something"
-user.admin = true
-user.latitude = 51.88093
-user.longitude = 0.8788
-user.address = "28 Audley Road, Colchester, CO3 3TY"
-user.save!(validate: false)
-puts "user created"
 
 # ___________________________________________FIRST AID MAP SEED DATA___________________________________________
 puts "deleting FirstAidMap records"
@@ -121,3 +111,14 @@ locations.each do |loc|
 end
 
 puts "Successfully created #{locations.size} UK locations!"
+
+puts "creating admin user"
+user = User.new
+user.email = "admin@bleedsafe.com"
+user.password = "something"
+user.admin = true
+user.latitude = 51.88093
+user.longitude = 0.8788
+user.address = "28 Audley Road, Colchester, CO3 3TY"
+user.save(validate: false)
+puts "user created"
