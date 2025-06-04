@@ -9,7 +9,7 @@
   </nav>
 
   <% if current_user.admin == true %>
-  <%=link_to "create emergency module", new_emergency_module_path, class: "btn btn-primary m-3"%>
+    <%=link_to "create emergency module", new_emergency_module_path, class: "btn btn-primary m-3"%>
   <% end %>
   <div class= "cards-module">
     <% @emergency_modules.each do |emergency_module| %>
@@ -20,6 +20,7 @@
       <%=link_to emergency_module_path(emergency_module) do %>
         <%= cl_image_tag(emergency_module.photo.key, height: 300, width: 400, crop: :fill) if emergency_module.photo.attached? %>
       <% end %>
+      <% if current_user.admin == true %>
       <h3 class="ps-3">Admin Data</h3>
       <% if emergency_module.active == true  %>
         <p class="card-text ps-3">Status: Active </p>
@@ -27,7 +28,7 @@
         <p class="card-text ps-3">Status: Disabled </p>
       <% end %>
       <p class="card-text ps-3">Last updated by <%= emergency_module.user.email %></p>
-
+      <% end %>
       </div>
 
     <% end %>

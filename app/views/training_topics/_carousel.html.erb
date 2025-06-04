@@ -12,7 +12,13 @@
         <div class="card-header">
           <h5 class="card-title"><%= training_page.title %></h5>
         </div>
+        <% if training_page.video_url == "" %>
         <%= cl_image_tag(training_page.photo.key, height: 300, width: 400, crop: :fill) if training_page.photo.attached? %>
+        <% else %>
+
+          <iframe width="" height="315"  src="<%= training_page.video_url %>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+        <% end %>
       <p class="card-text ps-3 pb-3"><%= training_page.step %></p>
 
     </div>

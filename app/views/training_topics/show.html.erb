@@ -14,6 +14,7 @@
 </div>
 
 <div class="container">
+<% if current_user.admin == true %>
     <div class="card card-container">
     <div class="card-header">
       <h5 class="card-title"><%= @training_topic.name %></h5>
@@ -38,7 +39,11 @@
       <div class="card-header">
         <h5 class="card-title"><%= training_page.title %></h5>
       </div>
-      <%= cl_image_tag(training_page.photo.key, height: 300, width: 400, crop: :fill) if training_page.photo.attached? %>
+      <% if training_page.video_url == "" %>
+        <%= cl_image_tag(training_page.photo.key, height: 300, width: 400, crop: :fill) if training_page.photo.attached? %>
+      <% else %>
+        <iframe width="" height="315"  src="<%= training_page.video_url %>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <% end %>
       <p class="card-text ps-3">Instructions: <%= training_page.step %></p>
       <% if training_page.active == true  %>
         <p class="card-text ps-3">Status: Active </p>
@@ -49,22 +54,26 @@
     </div>
   <% end %>
 <br>
-
-<h3>User Journey Carousel Preview - Mobile like</h3>
-<br>
-<br>
-
-<div style="width:350px;">
-<%= render 'training_topics/carousel' %>
-</div>
 <div class="card form-pages p-4 m-3">
   <h2>Create Page</h2>
     <%= simple_form_for [@training_module, @training_topic, @training_page] do |f| %>
       <%= f.input :title %>
       <%= f.input :step %>
       <%= f.input :photo, as: :file %>
+      <%= f.input :video_url %>
       <%= f.input :active %>
       <%= f.button :submit, "Submit", class: "btn btn-primary m-3"%>
     <% end %>
 </div>
+
+<h3>User Journey Carousel Preview - Mobile like</h3>
+<br>
+<br>
+
+  <div style="width:350px;">
+    <%= render 'training_topics/carousel' %>
+  </div>
+<% else %>
+  <%= render 'training_topics/carousel' %>
+<% end %>
 </div>
