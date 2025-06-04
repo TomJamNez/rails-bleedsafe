@@ -12,7 +12,7 @@
         <div class="card-header">
           <h5 class="card-title"><%= training_page.title %></h5>
         </div>
-        <% if training_page.video_url == nil %>
+        <% if training_page.video_url == "" %>
         <%= cl_image_tag(training_page.photo.key, height: 300, width: 400, crop: :fill) if training_page.photo.attached? %>
         <% else %>
 

@@ -3,7 +3,7 @@ class TrainingTopicsController < ApplicationController
 
   def show
     @training_topic = TrainingTopic.find(params[:id])
-    @training_pages = @training_topic.training_pages.all
+    @training_pages = @training_topic.training_pages.all.order(id: :asc)
     @training_page = TrainingPage.new()
   end
 
