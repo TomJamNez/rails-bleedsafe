@@ -16,8 +16,14 @@
 .navbar-lewagon .navbar-brand img {
   height: 75px;
   width: 75px;
-  margin-left: 50px;
+
   object-fit: contain;
+}
+
+@media (min-width: 576px) {
+  .navbar-lewagon .navbar-brand img {
+    margin-left: 50px;
+  }
 }
 
 .navbar-lewagon .nav-btns {
