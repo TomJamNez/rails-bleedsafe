@@ -11,9 +11,9 @@ class TrainingPagesController < ApplicationController
     @training_page.active = true
 
     if @training_page.save
-      redirect_to training_module_training_training_topic_path(@training_module, @training_topic), notice: 'Training page was successfully created.'
+      redirect_to training_module_training_topic_path(@training_module, @training_topic), notice: 'Training page was successfully created.'
     else
-      render :new, status: :unprocessable_entity
+      render :show, status: :unprocessable_entity
     end
   end
 
@@ -35,7 +35,7 @@ class TrainingPagesController < ApplicationController
   end
 
   def training_page_params
-    params.require(:training_page).permit(:title, :step, :active, :photo)
+    params.require(:training_page).permit(:title, :step, :active, :photo, :video_url)
   end
   # Will use this later when pundit is ready
   # def authenticate_admin!

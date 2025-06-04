@@ -38,15 +38,16 @@
     <%=link_to emergency_module_emergency_topic_path(@emergency_module, emergency_topic) do %>
       <%= cl_image_tag(emergency_topic.photo.key, height: 300, width: 400, crop: :fill) if emergency_topic.photo.attached?  %>
     <% end %>
+    <% if current_user.admin == true %>
       <% if emergency_topic.active == true  %>
         <p class="card-text ps-3">Status: Active </p>
       <% else %>
         <p class="card-text ps-3">Status: Disabled </p>
       <% end %>
     <p class="card-text ps-3">Last updated by <%= emergency_topic.user.email %></p>
-
+    <% end %>
   </div>
-<% end %>
+  <% end %>
 
   </div>
 </div>
