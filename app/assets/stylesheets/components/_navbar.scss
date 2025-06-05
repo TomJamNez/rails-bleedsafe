@@ -10,13 +10,28 @@
 
 .navbar-lewagon .navbar-nav {
   gap: 12px;
-  margin-right: 50px;
+  margin-right: 0;
+}
+
+@media (min-width: 576px) {
+  .navbar-lewagon .navbar-nav {
+    margin-right: 50px;
+  }
 }
 
 .navbar-lewagon .navbar-brand img {
   height: 75px;
   width: 75px;
+  transition: transform 0.3s ease;
+  object-fit: contain;
+}
 
+.navbar-lewagon .navbar-brand img:hover {
+  height: 75px;
+  width: 75px;
+  transform: scale(1.2);
+  transition: transform 0.3s ease;
+  overflow: hidden;
   object-fit: contain;
 }
 
