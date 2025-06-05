@@ -11,3 +11,82 @@
 @import "components/index";
 @import "pages/index";
 @import url("https://api.mapbox.com/mapbox-gl-js/v3.1.2/mapbox-gl.css");
+
+.btn {
+  padding: 8px 20px;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 14px;
+  border-radius: 25px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid transparent;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(234, 30, 33, 0.25);
+  }
+}
+
+.btn-primary {
+  background-color: transparent;
+  border-color: #ea1e21;
+  color: #2f3537;
+
+  &:hover {
+    background-color: transparent;
+    border-color: #ea1e21;
+    color: #ea1e21;
+  }
+}
+
+.btn-danger {
+  background-color: #ea1e21;
+  color: white;
+  border: none;
+
+  &:hover {
+    background-color: #2f3537;
+    color: #ea1e21;
+  }
+}
+
+.btn-unique {
+  background-color: white;
+  color: #2f3537;
+  border: #ea1e21;
+
+  &:hover {
+    background-color: #2f3537;
+    color: #ea1e21;
+  }
+}
+
+.btn > a {
+  color: inherit;
+  text-decoration: none;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card {
+  border: none;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(234, 30, 33, 0.25);
+    transition: all 0.3s ease;
+  }
+
+}

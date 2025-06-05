@@ -17,12 +17,12 @@
           <% unless faq.first? %>
             <%= link_to "↑", move_up_faq_path(faq),
                   data: { turbo_method: :patch },
-                  class: "btn btn-sm btn-outline-secondary" %>
+                  class: "btn btn-sm btn-danger" %>
           <% end %>
           <% unless faq.last? %>
             <%= link_to "↓", move_down_faq_path(faq),
                   data: { turbo_method: :patch },
-                  class: "btn btn-sm btn-outline-secondary" %>
+                  class: "btn btn-sm btn-danger" %>
           <% end %>
           <%= link_to "edit", edit_faq_path(faq), class: "btn btn-sm btn-primary" %>
           <%= link_to "delete", faq_path(faq),

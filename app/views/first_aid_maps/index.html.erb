@@ -38,10 +38,10 @@
           </div>
           <% if current_user.admin == true %>
             <div class="card-footer bg-white d-flex justify-content-between">
-              <%= link_to 'Edit', edit_first_aid_map_path(map), class: 'btn btn-sm btn-outline-secondary' %>
+              <%= link_to 'Edit', edit_first_aid_map_path(map), class: 'btn card-btn btn-primary' %>
               <%= link_to 'Delete', first_aid_map_path(map),
                 data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' },
-                class: 'btn btn-sm btn-outline-danger' %>
+                class: 'btn btn-danger' %>
             </div>
           <% end %>
         </div>
