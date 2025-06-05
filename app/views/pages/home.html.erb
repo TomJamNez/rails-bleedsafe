@@ -4,7 +4,7 @@
       <h1>Welcome to Bleed Safe</h1>
       <p>Empowering youth with essential emergency strategies for real-world situations.</p>
       <%= link_to "Get Started", training_modules_path,
-          class: "btn cta-button btn-hero",
+          class: "btn btn-unique",
           data: { turbo_frame: "main_content" } %>
     </div>
 
@@ -26,12 +26,12 @@
 
       <% quick_links.each do |link| %>
         <div class="col-sm-6 col-md-4 d-flex">
-          <div class="card card-home flex-fill">
+          <div class="card flex-fill">
             <div class="card-body text-center">
               <h5 class="card-title"><%= link[:title] %></h5>
               <p class="card-text"><%= link[:body] %></p>
               <%= link_to "Go", link[:path],
-                  class: "btn card-btn btn-#{link[:style]}",
+                  class: "btn btn-primary",
                   data: { turbo_frame: "main_content" } %>
             </div>
           </div>

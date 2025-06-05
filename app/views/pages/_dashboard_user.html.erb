@@ -16,7 +16,7 @@
               <h5 class="card-title"><%= link[:title] %></h5>
               <p class="card-text"><%= link[:body] %></p>
               <%= link_to "Go", link[:path],
-                  class: "btn card-btn btn-#{link[:style]}",
+                  class: "btn card-btn btn-primary",
                   data: { turbo_frame: "main_content" } %>
             </div>
           </div>
