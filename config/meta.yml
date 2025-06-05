@@ -1,0 +1,6 @@
+# config/meta.yml
+meta_product_name: "Bleed Safe"
+meta_title: "Bleed Safe - Empowering youth with essential emergency strategies for real-world situations."
+meta_description: "Learn how to carry out emergency medical treatment, find your local first aid centres and utilise our crime map for awareness of crime rates in different areas."
+meta_image: "cover.png" # should exist in `app/assets/images/`
+# twitter_account: "@product_twitter_account" # required for Twitter Cards
